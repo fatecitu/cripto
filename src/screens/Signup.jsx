@@ -1,19 +1,21 @@
 import React, { useState } from 'react'
-
 import { useSafeAreaInsets }
     from 'react-native-safe-area-context'
-
 import { View, Text, TouchableOpacity, StyleSheet, 
-         Image, TextInput, Alert } from 'react-native'
+         Image, TextInput, Alert, ActivityIndicator } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import themes from '../themes'
+import { auth } from '../../config/firebase'
+import { createUserWithEmailAndPassword } 
+       from 'firebase/auth'
+
 export default function Signup() {
     const navigation = useNavigation()
     const insets = useSafeAreaInsets()
 
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
-    const [efetuandoLogin, setEfetuandoLogin] = useState(false)
+    const [efetuandoCadastro, setEfetuandoCadastro] = useState(false)
     
     function handleSignup() {
         //Efetuando as validações básicas do form
@@ -27,6 +29,21 @@ export default function Signup() {
             'A senha deve ter no mínimo 6 caracteres')
             return  
         }
+        //Iremos cadastrar no Firebase
+        setEfetuandoCadastro(true)
+        createUserWithEmailAndPassword(auth, email, senha)
+        .then((userCredential)=> {
+            const user = userCredential.user
+            console.log(user)
+            Alert.alert('Aviso',
+            'Usuário criado com sucesso! Efetue o login')
+            navigation.navigate('Login')
+        })
+        .catch((error) => {
+            Alert.alert('Erro',
+          `Erro ao criar o novo usuário: ${error.message}`)
+        })
+        setEfetuandoCadastro(false)
     }
 
     return (
@@ -56,8 +73,12 @@ export default function Signup() {
                         value={senha}
                         onChangeText={setSenha}
                         secureTextEntry />
-
-                    <TouchableOpacity style={styles.loginButton}
+{efetuandoCadastro &&
+<ActivityIndicator 
+           size="large"
+           color={themes.colors.utility.danger} />
+}
+<TouchableOpacity style={styles.loginButton}
                         onPress={handleSignup}>
                         <Text style={styles.loginButtonText}>
                             Cadastrar

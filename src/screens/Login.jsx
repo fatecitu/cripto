@@ -7,6 +7,10 @@ import { View, Text, TouchableOpacity, StyleSheet,
          Image, TextInput, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import themes from '../themes'
+
+import {auth} from '../../config/firebase'
+import {signInWithEmailAndPassword} from 'firebase/auth'
+
 export default function Login() {
     const navigation = useNavigation()
     const insets = useSafeAreaInsets()
@@ -27,6 +31,18 @@ export default function Login() {
             'A senha deve ter no mínimo 6 caracteres')
             return  
         }
+        setEfetuandoLogin(true)
+        signInWithEmailAndPassword(auth, email, senha)
+        .then((userCredential)=> {
+            const user = userCredential.user
+            console.log(user)
+             navigation.navigate('Home')
+        })
+        .catch((error) => {
+            Alert.alert('Erro',
+          `Erro ao efetuar o login: ${error.message}`)
+        })
+        setEfetuandoLogin(false)
     }
 
     return (
