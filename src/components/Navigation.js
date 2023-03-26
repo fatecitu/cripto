@@ -4,6 +4,7 @@ import { NavigationContainer, StackActions }
     from '@react-navigation/native'
 import Login from '../screens/Login'
 import Signup from '../screens/Signup'
+import Home from '../screens/Home'
 
 const Stack = createNativeStackNavigator()
 function AppStack() {
@@ -17,6 +18,10 @@ function AppStack() {
                 name="Signup"
                 options={{ headerShown: false }}
                 component={Signup} />
+                <Stack.Screen 
+                name="Home" 
+                component={Home} 
+                options ={{ headerTitle: 'Fatec Cripto'}} />
         </Stack.Navigator>
     )
 }

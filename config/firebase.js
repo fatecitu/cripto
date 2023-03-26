@@ -1,18 +1,22 @@
-import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth'
 
-//Firebase Config
+// Firebase config
 const firebaseConfig = {
-    apiKey: "AIzaSyAy8flm48crl0_Mkep_kNoSIOXBDJC7hvE",
-    authDomain: "fatec-cripto-6157b.firebaseapp.com",
-    projectId: "fatec-cripto-6157b",
-    storageBucket: "fatec-cripto-6157b.appspot.com",
-    messagingSenderId: "452111948587",
-    appId: "1:452111948587:web:af04cbab3e377ffccf836e"
+    apiKey: "AIzaSyA2okLf0f5rP-346KQQPgYN22jWX3GpyEA",
+    authDomain: "crud-firebase-expo-20f3e.firebaseapp.com",
+    projectId: "crud-firebase-expo-20f3e",
+    storageBucket: "crud-firebase-expo-20f3e.appspot.com",
+    messagingSenderId: "719927510524",
+    appId: "1:719927510524:web:d6f87a51562f60f1bd5e79"
   };
-//Inicializamos o Firebase
-const app = initializeApp(firebaseConfig)
-const auth = getAuth()
-export {auth}
+  
+
+/* initialize firebase */
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+export { auth };
+
+
 export const database = getFirestore()
