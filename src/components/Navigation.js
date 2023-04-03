@@ -11,6 +11,10 @@ const Stack = createNativeStackNavigator()
 function AppStack() {
     return (
         <Stack.Navigator>
+             <Stack.Screen
+                name="Login"
+                options={{ headerShown: false }}
+                component={Login} />
             <Stack.Screen 
                 name="Home" 
                 component={Home} 
@@ -19,10 +23,6 @@ function AppStack() {
                 name="Nova Cripto" 
                 component={AddCripto} 
                 options ={{ presentation: 'modal'}} />    
-            <Stack.Screen
-                name="Login"
-                options={{ headerShown: false }}
-                component={Login} />
             <Stack.Screen
                 name="Signup"
                 options={{ headerShown: false }}

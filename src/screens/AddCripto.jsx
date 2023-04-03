@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput, 
          Pressable, Alert } from 'react-native'
 import EmojiPicker, { pt } from 'rn-emoji-keyboard'
+import themes from '../themes'
 
 export default function AddCripto({ navigation }) {
     const [isOpen, setIsOpen] = useState(false)
@@ -98,8 +99,8 @@ export default function AddCripto({ navigation }) {
                 onChangeText={(text) => setNovaCripto(
                     { ...novaCripto, valor: text })}
             />
-            <Pressable onPress={validaCripto}>
-                <Text>Salvar</Text>
+            <Pressable onPress={validaCripto} style={styles.botao}>
+                <Text styles={styles.textoBotao}>Salvar</Text>
             </Pressable>
 
         </View>
@@ -121,5 +122,16 @@ const styles = StyleSheet.create({
     input: {
         width: '90%', padding: 8, marginVertical: 4,
         borderWidth: 1, borderColor: '#DDD', borderRadius: 8
+    },
+    botao: {
+        backgroundColor: themes.colors.utility.info,
+        borderRadius: 4,
+        padding: 16,
+        marginTop: 8
+    },
+    textoBotao: {
+        color: themes.colors.neutral.foreground,
+        fontWeight: 'bold',
+        textAlign: 'center',
     }
 })
