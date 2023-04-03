@@ -42,20 +42,24 @@ service cloud.firestore {
 }
 ```
 
-## 🌐 Veja uma demonstração online do projeto. 
-
-Utilize a sua conta Google para efetuar o Login, ou cadastre um novo usuário.
-
-https://ricardoleme.github.io/crud-firebase-v9-vanilla-js/
-
 ## 📵Emulador Android sem Acesso à Internet
 Caso o seu Emulador Android não consiga acessar a internet,
 execute o seguinte procedimento:
 - [ ] Abra o Terminal no *PowerShell*
 - [ ] Digite: ```C:\Users\labfatec\AppData\local\Android\Sdk\emulator\emulator.exe -list-avds``` (substitua o usuário pelo seu nome)
 - [ ] Anote o nome do AVD *(Android Virtual Device)* que foi exibido
-- [ ] Agora, digite o comando:
+- [ ] Agora, digite o comando a seguir no *Power Shell*:
 ```C:\Users\labfatec\AppData\local\Android\Sdk\emulator\emulator.exe -avd Pixel_2_API_30_1  -dns-server 8.8.8.8``` (Substitua o Pixel_2_API_30_1 pela sua AVD)
+
+Esse comando executa o emulador do Android usando a imagem do dispositivo virtual "Pixel_2_API_30_1" e define um servidor DNS para ser usado pelo emulador.
+
+Explicando cada parte do comando:
+
+```C:\Users\labfatec\AppData\local\Android\Sdk\emulator\emulator.exe``` é o caminho para o executável do emulador do Android.
+
+`-avd Pixel_2_API_30_1` especifica qual imagem do dispositivo virtual (AVD) deve ser usada pelo emulador. Nesse caso, é a imagem do dispositivo virtual "Pixel_2_API_30_1".
+
+`-dns-server 8.8.8.8` define o servidor DNS a ser usado pelo emulador. Nesse caso, o servidor DNS escolhido é o 8.8.8.8, que é fornecido pelo Google e é um dos servidores DNS mais populares e confiáveis disponíveis.
 
 ## 💬 Contato
 
