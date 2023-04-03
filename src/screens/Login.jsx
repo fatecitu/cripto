@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 
 import { useSafeAreaInsets }
     from 'react-native-safe-area-context'
 
 import { View, Text, TouchableOpacity, StyleSheet, 
-         Image, TextInput, Alert } from 'react-native'
+         ActivityIndicator, TextInput, Alert } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import themes from '../themes'
 
 import {auth} from '../../config/firebase'
 import {signInWithEmailAndPassword} from 'firebase/auth'
+import LottieView from 'lottie-react-native';
 
 export default function Login() {
     const navigation = useNavigation()
@@ -19,6 +20,7 @@ export default function Login() {
     const [senha, setSenha] = useState('')
     const [efetuandoLogin, setEfetuandoLogin] = useState(false)
     
+    const animation = useRef(null);
     function handleLogin() {
         //Efetuando as validações básicas do form
         if(email === '' || senha ===''){
@@ -53,8 +55,17 @@ export default function Login() {
         }}>
             <View style={styles.container}>
                 <Text style={styles.titulo}>Login</Text>
-                <Image source={require('../../assets/icon.png')}
-                    style={styles.logo} />
+                <LottieView
+        autoPlay
+        ref={animation}
+        style={{
+          width: 200,
+          height: 200,
+          backgroundColor: themes.colors.brand.verdeClaro,
+        }}
+        // Find more Lottie files at https://lottiefiles.com/featured
+        source={require('../../assets/login.json')}
+      />
 
                 <View style={styles.form}>
                     <Text style={styles.label}>Email</Text>
@@ -75,6 +86,7 @@ export default function Login() {
 
                     <TouchableOpacity style={styles.loginButton}
                         onPress={handleLogin}>
+                            {efetuandoLogin && <ActivityIndicator size={'large'} color={themes.colors.utility.warning} />}
                         <Text style={styles.loginButtonText}>
                             Login
                         </Text>
