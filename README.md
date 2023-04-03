@@ -75,4 +75,4 @@ Prof. Ms. Ricardo Leme <br>
 
 Esse projeto está sob a licença Apache. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 ---
-Made with 💜, HTML, CSS and only Vanilla JS. 
+Made with 💜, Expo, React Native and Firebase. 
