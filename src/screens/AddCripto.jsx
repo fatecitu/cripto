@@ -4,6 +4,11 @@ import { View, Text, StyleSheet, TextInput,
 import EmojiPicker, { pt } from 'rn-emoji-keyboard'
 import themes from '../themes'
 
+import { database, auth } from '../../config/firebase'
+import { collection, addDoc } from 'firebase/firestore'
+import moment from 'moment'
+const hoje = moment()
+
 export default function AddCripto({ navigation }) {
     const [isOpen, setIsOpen] = useState(false)
     const [novaCripto, setNovaCripto] = useState({
@@ -13,7 +18,9 @@ export default function AddCripto({ navigation }) {
         quantidade: 0,
         valor: 0,
         vendido: false,
-        valorVenda: 0
+        valorVenda: 0,
+        createdAt: hoje.format(),
+        usuarioInclusao: auth.currentUser.uid
     })
 
     const handleTeclado = (emojiObject) => {
@@ -27,6 +34,7 @@ export default function AddCripto({ navigation }) {
         if(novaCripto.nome === ''){
             Alert.alert('⚠ Atenção',
             'O campo nome da criptomoeda é obrigatório')
+            alert('O campo nome da criptomoeda é obrigatório')
             return
         }
         if(novaCripto.simbolo.length !== 3){
@@ -45,7 +53,9 @@ export default function AddCripto({ navigation }) {
             return
         }
         //Lógica para salvar no Firebase
-        navigation.goBack()
+        const docRef = await addDoc(
+            collection(database, 'criptos'), novaCripto)
+            navigation.goBack()
     }
     return (
         <View style={styles.container}>
