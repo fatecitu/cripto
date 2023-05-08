@@ -72,7 +72,6 @@ Prof. Ms. Ricardo Leme <br>
 </a>
 
 ## 📝 Licença
-
 Esse projeto está sob a licença Apache. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 ---
 Made with 💜, Expo, React Native and Firebase. 

@@ -39,8 +39,14 @@ export default function Home({navigation}){
     const getCriptos = onSnapshot(q, querySnapshot => {
         setCriptos(
             querySnapshot.docs.map(doc => ({
-                id: doc.id, emoji: doc.data().emoji,
-                nome: doc.data().nome
+                id: doc.id, 
+                emoji: doc.data().emoji,
+                nome: doc.data().nome,
+                simbolo: doc.data().simbolo,
+                vendido: doc.data().vendido,
+                quantidade: doc.data().quantidade,
+                valor: doc.data().valor,
+                createdAt: doc.data().createdAt
             }))
         )
     })
@@ -53,7 +59,7 @@ export default function Home({navigation}){
          <ScrollView contentContainerStyle={{
                 paddingBottom: 64
             }}>
-            <Text>Menu Principal</Text>            
+            <Text style={styles.tituloApp}>Controle de Criptos</Text>            
             {carregaCriptos && 
             <ActivityIndicator size="large"
             color={themes.colors.brand.verdeEscuro}/>}
@@ -75,7 +81,25 @@ export default function Home({navigation}){
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        margin: 0,
-        backgroundColor: themes.colors.brand.verdeClaro
+        backgroundColor: themes.colors.brand.verdeEscuro,
+        margin: 0
+    },
+    tituloApp: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        marginBottom: 8,
+        color: themes.colors.neutral.foreground,
+        padding: 8
+    },
+    buscaInput: {
+        color: themes.colors.neutral.foreground,
+        backgroundColor: themes.colors.neutral.neutral100,
+        borderBottomColor: themes.colors.utility.contrast,
+        marginHorizontal: 100,
+        marginBottom: 8,
+        padding: 8,
+        borderBottomWidth: 2,
+        textAlign: 'center',
+
     }
-})
+});
