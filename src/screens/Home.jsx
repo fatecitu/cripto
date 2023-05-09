@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useLayoutEffect} 
        from 'react'
-import {View, Text, Alert, ActivityIndicator, ScrollView, StyleSheet} from 'react-native'
+import {View, Text, Alert, ActivityIndicator, ScrollView, 
+        StyleSheet, TextInput} from 'react-native'
 import BotaoFlutuante from '../components/BotaoFlutuante'
 import themes from '../themes'
 import {MaterialCommunityIcons} from '@expo/vector-icons'
@@ -64,9 +65,21 @@ export default function Home({navigation}){
             <ActivityIndicator size="large"
             color={themes.colors.brand.verdeEscuro}/>}
             
+            <TextInput
+                placeholder='🔎Filtrar...'
+                autoFocus
+    placeholderTextColor={themes.colors.neutral.foreground}
+    style={styles.buscaInput}
+    onChangeText={(text)=> setBusca(text)}
+    />
+
             {/*<Text>{JSON.stringify(criptos)}</Text>*/} 
             {
-            criptos.map(dadocripto => 
+            criptos
+            .filter((cripto) =>
+            cripto.nome.toLocaleLowerCase()
+               .includes(busca.toLocaleLowerCase()))
+            .map(dadocripto => 
             <Cripto key={dadocripto.id} {...dadocripto} />)           
             }
             

@@ -6,6 +6,7 @@ import Login from '../screens/Login'
 import Signup from '../screens/Signup'
 import Home from '../screens/Home'
 import AddCripto from '../screens/AddCripto'
+import EditCripto from '../screens/EditCripto'
 
 const Stack = createNativeStackNavigator()
 function AppStack() {
@@ -22,7 +23,11 @@ function AppStack() {
             <Stack.Screen 
                 name="Nova Cripto" 
                 component={AddCripto} 
-                options ={{ presentation: 'modal'}} />    
+                options ={{ presentation: 'modal'}} /> 
+            <Stack.Screen 
+                name="Editar Cripto" 
+                component={EditCripto} 
+                options ={{ presentation: 'modal'}} />         
             <Stack.Screen
                 name="Signup"
                 options={{ headerShown: false }}

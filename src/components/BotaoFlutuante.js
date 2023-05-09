@@ -13,7 +13,7 @@ const BotaoFlutuante = ({ onPress, icon }) => (
 
 const styles = StyleSheet.create({
     button: {
-        position: 'absolute',   top: 48,
+        position: 'absolute',   top: 8,
         right: 16,
         backgroundColor: themes.colors.utility.warning,
         borderRadius: 32,     width: 64,

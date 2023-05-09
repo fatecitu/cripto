@@ -4,8 +4,7 @@ import { getAuth } from 'firebase/auth'
 
 // Firebase config
 const firebaseConfig = {
-
-  };
+ };
   
 
 /* initialize firebase */
